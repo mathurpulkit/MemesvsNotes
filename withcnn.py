@@ -11,26 +11,26 @@ tf.random.set_seed(2)
 np.random.seed(3)
 pyrand.seed(4)
 alpha = 0.001
-epoch = 2
-batchsize = 32
+epoch = 4
+batchsize = 64
 
 
 def mymodel():
     model = tf.keras.models.Sequential([
-        tf.keras.layers.Conv2D(32, 3, padding='valid', activation='relu'),
+        tf.keras.layers.Conv2D(16, 3, padding='same', activation='relu'),
         tf.keras.layers.MaxPool2D(pool_size=(2, 2), strides=2),
-        tf.keras.layers.Conv2D(64, 3, padding='valid',activation='relu'),
+        tf.keras.layers.Conv2D(32, 3, padding='same',activation='relu'),
         tf.keras.layers.MaxPool2D(pool_size=(2, 2),strides=2),
-        tf.keras.layers.Conv2D(128, 5, padding='valid',activation='relu'),
+        tf.keras.layers.Conv2D(64, 5, padding='same',activation='relu'),
         tf.keras.layers.MaxPool2D(pool_size=(2, 2), strides=2),
-        tf.keras.layers.Flatten(),
+        tf.keras.layers.Flatten(input_shape=(32,32,64)),
         tf.keras.layers.Dense(500, activation='relu'),
         tf.keras.layers.Dropout(0.1),
         tf.keras.layers.Dense(100, activation='relu'),
         tf.keras.layers.Dropout(0.1),
         tf.keras.layers.Dense(80, activation='relu'),
         tf.keras.layers.Dropout(0.1),
-        tf.keras.layers.Dense(2, activation=None)
+        tf.keras.layers.Dense(2, activation='softmax')
     ])
     return model
 
@@ -43,10 +43,11 @@ def train_model():
     print(X_train.shape, Y_train.shape)
     model = mymodel()
     loss_fn = tf.keras.losses.CategoricalCrossentropy()
-    model.compile(loss=loss_fn,metrics=["accuracy"],
+    model.compile(loss=loss_fn, metrics=["accuracy"],
                   optimizer=tf.keras.optimizers.Adam(learning_rate=alpha))
     model.evaluate(X_test, Y_test)
-    model.fit(X_train, Y_train, epochs=epoch,validation_split=0.0208,batch_size=batchsize)
+    model.fit(X_train, Y_train, epochs=epoch,validation_split=0.0208,
+              batch_size=batchsize, shuffle=True)
     model.evaluate(X_test, Y_test)
 
 def main():
