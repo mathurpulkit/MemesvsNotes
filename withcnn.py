@@ -11,7 +11,7 @@ tf.random.set_seed(2)
 np.random.seed(3)
 pyrand.seed(4)
 alpha = 0.001
-epoch = 10
+epoch = 2
 batchsize = 32
 
 
@@ -25,11 +25,11 @@ def mymodel():
         tf.keras.layers.MaxPool2D(pool_size=(2, 2), strides=2),
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(500, activation='relu'),
-        #tf.keras.layers.Dropout(0.1),
+        tf.keras.layers.Dropout(0.1),
         tf.keras.layers.Dense(100, activation='relu'),
-        #tf.keras.layers.Dropout(0.1),
+        tf.keras.layers.Dropout(0.1),
         tf.keras.layers.Dense(80, activation='relu'),
-        #tf.keras.layers.Dropout(0.1),
+        tf.keras.layers.Dropout(0.1),
         tf.keras.layers.Dense(2, activation=None)
     ])
     return model
