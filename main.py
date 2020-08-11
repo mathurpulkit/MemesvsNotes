@@ -1,6 +1,8 @@
 import withcnn
-x = input("Try with or without CNN, Enter 1 for CNN, other number for non-CNN: ")
-if x == 1:
+import noncnn
+x = input("Try with or without CNN, Enter a for CNN, other number for non-CNN: ")
+if x == 'a':
     withcnn.main()
-#else:
+else:
+    noncnn.main()
 
