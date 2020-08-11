@@ -1,5 +1,6 @@
 #pillow needs to be installed to read jpg images
 
+
 import matplotlib.image as img
 from sklearn.utils import shuffle
 import numpy as np
