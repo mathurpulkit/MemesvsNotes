@@ -37,8 +37,6 @@ def mymodel():
 
 def train_model():
     X_train, Y_train, X_test, Y_test = rd.read()
-    #X_train = X_train.reshape((-1,256*256*3))/255
-    #X_test = X_test.reshape((-1,256*256*3))/255
     X_train, X_test = X_train/255 - 0.5, X_test/255 - 0.5
     print(X_train.shape, Y_train.shape)
     model = mymodel()

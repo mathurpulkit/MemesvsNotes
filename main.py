@@ -1,8 +1,18 @@
 import withcnn
 import noncnn
-x = input("Try with or without CNN, Enter a for CNN, other number for non-CNN: ")
+import nponly
+
+print("Welcome to Memes vs Notes Classifier")
+print("Select Your Choice of Training Algorithm:")
+print("a. TensorFlow based using CNN")
+print("b. TensorFlow based using Fully Connected Layers Only")
+print("c. Only NumPy based using Fully Connected Layers Only")
+x = input("Enter Your Choice: ")
+
 if x == 'a':
     withcnn.main()
-else:
+elif x == 'b':
     noncnn.main()
+elif x == 'c':
+    nponly.main()
 
