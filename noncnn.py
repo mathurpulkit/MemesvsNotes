@@ -11,21 +11,21 @@ seed(1)
 tf.random.set_seed(2)
 np.random.seed(3)
 pyrand.seed(4)
-alpha = 0.002
-epoch = 10
-batchsize = 64
+alpha = 0.0018
+epoch = 7
+batchsize = 32
 
 
 def mymodel():
     model = tf.keras.models.Sequential([
         tf.keras.layers.Dense(1000, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dropout(0.35),
         tf.keras.layers.Dense(400, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dropout(0.35),
         tf.keras.layers.Dense(100, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dropout(0.35),
         tf.keras.layers.Dense(40, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dropout(0.35),
         tf.keras.layers.Dense(2, activation='softmax')
     ])
     return model

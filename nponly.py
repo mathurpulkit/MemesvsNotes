@@ -32,10 +32,10 @@ def leakyrelu_back(x):
 
 
 buffer = 10**-8
-learning_rate = 0.002
-epoch = 5
-batch_size = 64
-lamda = 0.05
+learning_rate = 0.001
+epoch = 4
+batch_size = 32
+lamda = 0.25
 report_name = "Report No 1"  # report name
 
 
@@ -161,7 +161,7 @@ def main():
     costs_epoch, costs_batch, accuracies = train_model(X_train,Y_train,parameters)
     acc_train = check_accuracy(X_train,Y_train,parameters)
     acc_test = check_accuracy(X_test,Y_test, parameters)
-    print("Train set Accuracy is: ", acc_train*100, "%")
+    print("Train+Dev set Accuracy is: ", acc_train*100, "%")
     print("Test set Accuracy is: ", acc_test*100, "%")
     notes = input("Any Special Notes to add in the report: ")
     rg.imagegen(report_name , costs_epoch, costs_batch, accuracies)

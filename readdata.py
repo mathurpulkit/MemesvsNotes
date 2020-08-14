@@ -15,7 +15,7 @@ def read():
     for x in range(800):
         a = img.imread(r"Stage_2\Notes\\" + str(x) + ".jpg")
         X[x+800] = a
-    X, Y = shuffle(X,Y,random_state=17)
+    X, Y = shuffle(X,Y,random_state=0)
     X_train, Y_train = X[:1536], Y[:1536]
     X_test, Y_test = X[1536:], Y[1536:]
     print(X.shape)

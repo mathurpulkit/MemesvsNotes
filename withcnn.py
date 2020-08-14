@@ -7,9 +7,9 @@ import readdata as rd
 from numpy.random import seed
 import random as pyrand
 seed(1)
-tf.random.set_seed(2)
-np.random.seed(3)
-pyrand.seed(4)
+tf.random.set_seed(0)
+np.random.seed(1)
+pyrand.seed(7)
 alpha = 0.001
 epoch = 4
 batchsize = 64
@@ -25,11 +25,11 @@ def mymodel():
         tf.keras.layers.MaxPool2D(pool_size=(2, 2), strides=2),
         tf.keras.layers.Flatten(input_shape=(32,32,64)),
         tf.keras.layers.Dense(500, activation='relu'),
-        tf.keras.layers.Dropout(0.1),
-        tf.keras.layers.Dense(100, activation='relu'),
-        tf.keras.layers.Dropout(0.1),
+        tf.keras.layers.Dropout(0.12),
+        tf.keras.layers.Dense(200, activation='relu'),
+        tf.keras.layers.Dropout(0.12),
         tf.keras.layers.Dense(80, activation='relu'),
-        tf.keras.layers.Dropout(0.1),
+        tf.keras.layers.Dropout(0.12),
         tf.keras.layers.Dense(2, activation='softmax')
     ])
     return model
